@@ -31,7 +31,8 @@ cat domain-status-code.txt | grep 200 > subjects.txt
 pip install hsecscan
 cat domains.txt | xargs -I @ sh -c 'hsecscan -i -u @ >> [headers]-domains.txt'
 __or__
-cat domains.txt | xargs -I @ sh -c 'curl -IL -m 5 @ >> [headers]-domains.txt'
+# -x proxy:port
+cat domains.txt | xargs -I @ sh -c 'curl -x 127.0.0.1:8080 -IL -m 5 @ >> [headers]-domains.txt'
 ```
 
 
