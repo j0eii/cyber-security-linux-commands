@@ -26,5 +26,13 @@ cat targets-all.txt | xargs -I @ sh -c 'curl -L -m 2 -s -o /dev/null -w "[%{http
 cat domain-status-code.txt | grep 200 > subjects.txt
 ```
 
+## Mass header test
+```bash
+pip install hsecscan
+cat domains.txt | xargs -I @ sh -c 'hsecscan -i -u @ >> [headers]-domains.txt'
+__or__
+cat domains.txt | xargs -I @ sh -c 'curl -IL -m 5 @ >> [headers]-domains.txt'
+```
+
 
 Feel free to contribute <3
